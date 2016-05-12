@@ -1,3 +1,3 @@
 # DLF4J Examples
-Provides some dlf4j examples with tensorflow.
+Provide some dlf4j examples to compare performance of dlf4 tools with tensorflow.
 
