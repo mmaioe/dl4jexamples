@@ -1,7 +1,6 @@
 import org.deeplearning4j.datasets.iterator.BaseDatasetIterator;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.DataSet;
-import org.nd4j.linalg.factory.Nd4j;
 
 /**
  * Created by ito_m on 5/13/16.
