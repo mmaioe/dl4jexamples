@@ -31,15 +31,15 @@ object SingleLayer {
     val attributeFIle_train: String = "/Users/maoito/myProject/tensorflow/MNIST_data/train-images-idx3-ubyte.gz"
 
     //Get the DataSetIterators:
-    val mnistTrain = IDXReader.read(attributeFIle_train,labelFile_train,1,1000)
-    val mnistTest = IDXReader.read(attributeFIle_test,labelFile_test,1,1000)
+    val mnistTrain = IDXReader.read(attributeFIle_train,labelFile_train,500)
+    val mnistTest = IDXReader.read(attributeFIle_test,labelFile_test,500)
 
 
     val conf = new NeuralNetConfiguration.Builder()
       .seed(rngSeed)
       .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
       .iterations(1)
-      .learningRate(0.006)
+      .learningRate(0.06)
       .updater(Updater.NESTEROVS).momentum(0.9)
       .regularization(true).l2(1e-4)
       .list(2)
@@ -49,7 +49,7 @@ object SingleLayer {
       .activation("relu")
       .weightInit(WeightInit.XAVIER)
       .build())
-      .layer(1, new OutputLayer.Builder(LossFunction.NEGATIVELOGLIKELIHOOD)
+      .layer(1, new OutputLayer.Builder(LossFunction.MCXENT)
       .nIn(1000)
       .nOut(outputNum)
       .activation("softmax")
@@ -61,6 +61,9 @@ object SingleLayer {
     val model = new MultiLayerNetwork(conf)
     model.init()
 //    model.setListeners(new ScoreIterationListener(1))
+
+    mnistTrain.reset();
+    mnistTest.reset();
 
     println("Train model....")
     (0 until numEpochs).foreach(_  => model.fit(mnistTrain))
