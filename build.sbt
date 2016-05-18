@@ -15,4 +15,8 @@ lazy val root = Project( id="dl4jexamples",  base=file(".")).
       "org.nd4j" % "canova-nd4j-codec" % "0.0.0.14",
       "org.nd4j" % "nd4j-x86" % "0.4-rc3.8"
     )
+  ).dependsOn(
+    dl4jdatareader
   )
+
+lazy val dl4jdatareader = ProjectRef(file("../dl4jdatareader"), "dl4jdatareader")
