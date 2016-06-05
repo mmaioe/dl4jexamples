@@ -17,6 +17,9 @@ lazy val root = Project( id="dl4jexamples",  base=file(".")).
     )
   ).dependsOn(
     dl4jdatareader
+  ).dependsOn(
+    featureextraction
   )
 
 lazy val dl4jdatareader = ProjectRef(file("../dl4jdatareader"), "dl4jdatareader")
+lazy val featureextraction = ProjectRef(file("../featureextraction"), "featureextraction")
