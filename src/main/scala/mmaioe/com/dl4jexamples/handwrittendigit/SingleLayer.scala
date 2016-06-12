@@ -31,8 +31,8 @@ object SingleLayer {
     val attributeFIle_train: String = "/Users/maoito/myProject/tensorflow/MNIST_data/train-images-idx3-ubyte.gz"
 
     //Get the DataSetIterators:
-    val mnistTrain = IDXReader.read(attributeFIle_train,labelFile_train,500)
-    val mnistTest = IDXReader.read(attributeFIle_test,labelFile_test,500)
+    val mnistTrain = IDXReader.read(attributeFIle_train,labelFile_train,500,numRows*numColumns,outputNum,null)
+    val mnistTest = IDXReader.read(attributeFIle_test,labelFile_test,500,numRows*numColumns,outputNum,null)
 
 
     val conf = new NeuralNetConfiguration.Builder()
